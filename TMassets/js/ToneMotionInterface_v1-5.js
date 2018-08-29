@@ -16,62 +16,62 @@ $(".preventDefault").click(function(event) {
 });
 
 // use as callback after slideDown() to test if newly visible element is out of viewport. if so, animate scroll just enough to fit it in.
-$.fn.adjustScroll = function() {
-  var viewport = {
-    top: $(window).scrollTop() + $("#TransportButtonWrapper").outerHeight(),
-  };
+// $.fn.adjustScroll = function() {
+//   var viewport = {
+//     top: $(window).scrollTop() + $("#TransportButtonWrapper").outerHeight(),
+//   };
   // bottom of viewport is effectively actual bottom minus space for button wrapper minus extra padding
-  viewport.bottom = viewport.top + $(window).height() - $("#ActionButtonWrapper").outerHeight() - 80;
-  var bounds = this.offset();
-  bounds.bottom = bounds.top + this.outerHeight();
-  if ( viewport.bottom < bounds.bottom || viewport.top > bounds.top ) {
+  // viewport.bottom = viewport.top + $(window).height() - $("#ActionButtonWrapper").outerHeight() - 80;
+  // var bounds = this.offset();
+  // bounds.bottom = bounds.top + this.outerHeight();
+  // if ( viewport.bottom < bounds.bottom || viewport.top > bounds.top ) {
     // if element is taller than window, scroll to top of element, otherwise place element as low as possible but still all in viewport
     // shouldn't usually happen that element is taller than window, but phone might do this
     /* known issue: iOS6 reports $(window).height() MINUS the menu bar, but scrolling pushes menu bar out of viewport.
     not a terrible problem, since the result is just extra room (equal to height of menu bar) below scrolled element */
-    if ( this.outerHeight() > $(window).height() || viewport.top > bounds.top ) {
-      adjustment = bounds.top - $("#TransportButtonWrapper").outerHeight() - 50;
-    }
-    else {
+    // if ( this.outerHeight() > $(window).height() || viewport.top > bounds.top ) {
+      // adjustment = bounds.top - $("#TransportButtonWrapper").outerHeight() - 50;
+    // }
+    // else {
       // adjustment should make room for footer button wrapper
-      adjustment = bounds.top - $(window).height() + this.outerHeight() + $("#ActionButtonWrapper").outerHeight();
-    }
-    $("html:not(:animated), body:not(:animated)").animate( { scrollTop: adjustment }, "fast" );
-  }
-};
+      // adjustment = bounds.top - $(window).height() + this.outerHeight() + $("#ActionButtonWrapper").outerHeight();
+    // }
+    // $("html:not(:animated), body:not(:animated)").animate( { scrollTop: adjustment }, "fast" );
+  // }
+
 // script for content that can be toggled visible/hidden
-$(".displayToggle").children("a").click(function(event) {
-  var contentToToggle = $(this).parent(".displayToggle").next(".hiddenContent");
-  if (contentToToggle.css("display") === "none") {
-    $(this).children("span.disclosureTriangle").html("&#9660; "); // rotate disclosure triangle
-    contentToToggle.slideDown("fast", function() {
-      $(this).adjustScroll();
-    });
-  }
-  else {
-    $(this).children("span.disclosureTriangle").html("&#9658; "); // rotate disclosure triangle back
-    contentToToggle.slideUp("fast");
-  }
-});
+// $(".displayToggle").children("a").click(function(event) {
+//   var contentToToggle = $(this).parent(".displayToggle").next(".hiddenContent");
+//   if (contentToToggle.css("display") === "none") {
+//     $(this).children("span.disclosureTriangle").html("&#9660; "); // rotate disclosure triangle
+//     contentToToggle.slideDown("fast", function() {
+//       $(this).adjustScroll();
+//     });
+//   }
+//   else {
+//     $(this).children("span.disclosureTriangle").html("&#9658; "); // rotate disclosure triangle back
+//     contentToToggle.slideUp("fast");
+//   }
+// });
 
 // function for setting text in #InstructionLabel and then adjusting scroll to make sure text is visible
-function setInstructions(instructions) {
-  $("#Instructions").html(instructions);
-  $("#Instructions").adjustScroll();
-}
+// function setInstructions(instructions) {
+//   $("#Instructions").html(instructions);
+//   $("#Instructions").adjustScroll();
+// }
 
 /******************************************************************
 *********************** TRANSPORT HANDLING ************************
 *******************************************************************/
 // waits until all buffers are loaded
 Tone.Buffer.on('load', function(){
-  // all buffers are loaded. 
+  // all buffers are loaded.
   if (ToneMotion.print) { console.log("All buffers are loaded"); }
   $("#LoadingAnimation").remove();
   $("#TransportButton").prop('disabled', false);
   $("#TransportButton").removeClass().addClass("musicIsReadyToPlay");
-  $("#TransportButton").html("play");
-  setIntroInstructions();
+   $("#TransportButton").html("play");
+  // setIntroInstructions();
 });
 
 // Optionally, sync Tone.Transport to UTC to allow devices to synchronize regardless of location
@@ -115,21 +115,26 @@ $("#TransportButton").click(function() {
     $("#TransportButton").removeClass().addClass("userMayStopMusic");
     $("#TransportButton").prop("disabled", true);
     // add confirmation message and two buttons to confirm or cancel stopping the music
-    $("#TransportButtonWrapper").append("<p id='ConfirmStopMessage'>Did you mean to stop the music? Maybe you just bumped the button.</p>");
-    $("#TransportButtonWrapper").append("<button id='ConfirmStop'>Yes, stop the music</button>");
-    $("#TransportButtonWrapper").append("<button id='CancelStop'>Oops, I didn't mean to do that</button>");
-    $("#ConfirmStop").click(function() {
-      // stop the music and remove this message
-      $("#ConfirmStopMessage").remove();
-      $("#ConfirmStop").remove();
-      $("#CancelStop").remove();
-      $("#TransportButton").prop("disabled", false);
-      $("#TransportButton").html("&#8635;"); // unicode character for refresh icon (clockwise arrow)
-      $("#TransportButton").removeClass().addClass("musicIsDonePlaying");
+    // $("#TransportButtonWrapper").append("<p id='ConfirmStopMessage'>Did you mean to stop the music? Maybe you just bumped the button.</p>");
+    // $("#TransportButtonWrapper").append("<button id='ConfirmStop'>Yes, stop the music</button>");
+    // $("#TransportButtonWrapper").append("<button id='CancelStop'>Oops, I didn't mean to do that</button>");
+    // $("#ConfirmStop").click(function() {
+    //   // stop the music and remove this message
+    //   $("#ConfirmStopMessage").remove();
+    //   $("#ConfirmStop").remove();
+    //   $("#CancelStop").remove();
+      // $("#TransportButton").prop("disabled", false);
+      // $("#TransportButton").html("&#8635;"); // unicode character for refresh icon (clockwise arrow)
+      // $("#TransportButton").removeClass().addClass("musicIsDonePlaying");
       Tone.Transport.stop();
       stopScript();
-      setInstructions("The music is stopped.");
-    });
+      $("#TransportButton").removeClass().addClass("musicIsPlaying");
+      location.reload();
+      $("#TransportButton").html("P L A Y");
+
+
+      // setInstructions("The music is stopped.");
+    }
     $("#CancelStop").click(function() {
       // keep playing music, but dismiss this message
       $("#TransportButton").prop("disabled", false);
@@ -138,19 +143,19 @@ $("#TransportButton").click(function() {
       $("#CancelStop").remove();
       $("#TransportButton").removeClass().addClass("musicIsPlaying");
     });
-  }
-  else if ($("#TransportButton").hasClass("userMayStopMusic")) {
-    // #TransportButton disabled, and two additional buttons were added to confirm or cancel stopping music
-  }
-  else if ($("#TransportButton").hasClass("musicIsDonePlaying")) {
-    // quick and dirty way to reset page is to just programmatically reload it
-    window.location.reload();
-  }
-  else {
-    // should never happen
-    console.log("Can't determine class of TransportButton.");
-  }
-});
+  });
+  // else if ($("#TransportButton").hasClass("userMayStopMusic")) {
+  //   // #TransportButton disabled, and two additional buttons were added to confirm or cancel stopping music
+  // }
+  // else if ($("#TransportButton").hasClass("musicIsDonePlaying")) {
+  //   // quick and dirty way to reset page is to just programmatically reload it
+  //   window.location.reload();
+  // }
+  // else {
+  //   // should never happen
+  //   console.log("Can't determine class of TransportButton.");
+  // }
+// });
 // if script reaches end, this function is called
 function musicHasFinishedPlaying() {
   $("#TransportButton").removeClass().addClass("musicIsDonePlaying");
@@ -162,6 +167,7 @@ function musicHasFinishedPlaying() {
   $("#CancelStop").remove();
   Tone.Transport.stop();
   stopScript();
+
 }
 // on iOS, the context will be started on the first valid user action on the #TransportButton element
 // see https://github.com/tambien/StartAudioContext
@@ -196,13 +202,13 @@ function updateIntroStatusLabel() {
 }
 // ToneMotion.showStatusLabels determines whether to show these values
 if (ToneMotion.showStatusLabels) {
-  $("#StatusLabels").append("<p id='AccelLabelX'>x-axis with gravity</p>");
-  $("#StatusLabels").append("<p id='AccelLabelY'>y-axis with gravity</p>");
+  // $("#StatusLabels").append("<p id='AccelLabelX'>x-axis with gravity</p>");
+  // $("#StatusLabels").append("<p id='AccelLabelY'>y-axis with gravity</p>");
 
   // trying to show accelerometer without gravity
-  $("#StatusLabels").append("<p id='AccelLabelNoGravX'>x-axis without gravity</p>");
-  $("#StatusLabels").append("<p id='AccelLabelNoGravY'>y-axis without gravity</p>");
-  $("#StatusLabels").append("<p id='AccelLabelTriggerFlag'>gyro trigger flag</p>");
+  // $("#StatusLabels").append("<p id='AccelLabelNoGravX'>x-axis without gravity</p>");
+  // $("#StatusLabels").append("<p id='AccelLabelNoGravY'>y-axis without gravity</p>");
+  // $("#StatusLabels").append("<p id='AccelLabelTriggerFlag'>gyro trigger flag</p>");
 
 
   $("#StatusLabels").append("<p id='DeviceMotionStatusLabel'>device motion status</p>");
@@ -224,33 +230,33 @@ if (ToneMotion.showStatusLabels) {
 // show status labels for testing only if ToneMotion.showStatusLabels is true
 function updateStatusLabels() {
   if (ToneMotion.status === "deviceDoesNotReportMotion") {
-    $("#DeviceMotionStatusLabel").html("No device motion detected");
-    $("#AccelLabelX").html("simulated x-axis: " + ToneMotion.xSig.value.toFixed(4));
-    $("#AccelLabelY").html("simulated y-axis: " + ToneMotion.ySig.value.toFixed(4));
-
-    $("#AccelLabelNoGravX").html("simulated x-axis without gravity: " + ToneMotion.xNoGrav.toFixed(4));
-    $("#AccelLabelNoGravY").html("simulated y-axis without gravity: " + ToneMotion.yNoGrav.toFixed(4));
+    // $("#DeviceMotionStatusLabel").html("No device motion detected");
+    // $("#AccelLabelX").html("simulated x-axis: " + ToneMotion.xSig.value.toFixed(4));
+    // $("#AccelLabelY").html("simulated y-axis: " + ToneMotion.ySig.value.toFixed(4));
+    //
+    // $("#AccelLabelNoGravX").html("simulated x-axis without gravity: " + ToneMotion.xNoGrav.toFixed(4));
+    // $("#AccelLabelNoGravY").html("simulated y-axis without gravity: " + ToneMotion.yNoGrav.toFixed(4));
   }
   else if (ToneMotion.status === "deviceDoesReportMotion") {
-    $("#DeviceMotionStatusLabel").html("Device motion detected");
-    $("#AccelLabelX").html("raw x-axis: " + accelRange.rawX.toFixed(4));
-    $("#AccelLabelY").html("raw y-axis: " + accelRange.rawY.toFixed(4));
-
-    // labels with "gyro" testing
-    $("#AccelLabelNoGravX").html("x-axis without gravity: " + ToneMotion.xNoGrav.toFixed(4));
-    $("#AccelLabelNoGravY").html("y-axis without gravity: " + ToneMotion.yNoGrav.toFixed(4));
-    $("#AccelLabelTriggerFlag").html("trigger flag: " + ToneMotion.triggerFlag);
+    // $("#DeviceMotionStatusLabel").html("Device motion detected");
+    // $("#AccelLabelX").html("raw x-axis: " + accelRange.rawX.toFixed(4));
+    // $("#AccelLabelY").html("raw y-axis: " + accelRange.rawY.toFixed(4));
+    //
+    // // labels with "gyro" testing
+    // $("#AccelLabelNoGravX").html("x-axis without gravity: " + ToneMotion.xNoGrav.toFixed(4));
+    // $("#AccelLabelNoGravY").html("y-axis without gravity: " + ToneMotion.yNoGrav.toFixed(4));
+    // $("#AccelLabelTriggerFlag").html("trigger flag: " + ToneMotion.triggerFlag);
   }
   else { $("#DeviceMotionStatusLabel").html("Testing for motion detection"); }
-  // The transport time elapsed in seconds
-  $("#ToneTransportTime").html("Tone.Transport time: " + Tone.Transport.seconds.toFixed(3));
-  // The AudioContext time
-  $("#AudioContextTime").html("Tone.now() time: " + Tone.now().toFixed(3));
-  if (ToneMotion.shouldSyncToUTC) {
-    // The Date.now() method returns the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC.
-    $("#TimeNow").html("Date.now(): " + Date.now());
-    $("#SyncTime").html("Date.now() % total duration: " + (Date.now() % (TMScore.totalDur() * 1000)));
-  }
+  // // The transport time elapsed in seconds
+  // $("#ToneTransportTime").html("Tone.Transport time: " + Tone.Transport.seconds.toFixed(3));
+  // // The AudioContext time
+  // $("#AudioContextTime").html("Tone.now() time: " + Tone.now().toFixed(3));
+  // if (ToneMotion.shouldSyncToUTC) {
+  //   // The Date.now() method returns the number of milliseconds elapsed since 1 January 1970 00:00:00 UTC.
+  //   $("#TimeNow").html("Date.now(): " + Date.now());
+  //   $("#SyncTime").html("Date.now() % total duration: " + (Date.now() % (TMScore.totalDur() * 1000)));
+  // }
 }
 
 /******************************************************************
@@ -263,7 +269,7 @@ function setActionButtonStatesForCue(cue) {
   $("#ActionButton1").prop("disabled", !(TMScore.cueEnablesButtons[cue][0]));
   $("#ActionButton2").prop("disabled", !(TMScore.cueEnablesButtons[cue][1]));
   $("#ActionButton3").prop("disabled", !(TMScore.cueEnablesButtons[cue][2]));
-  if (ToneMotion.print) { 
+  if (ToneMotion.print) {
     console.log("Current cue: " + cue + " with action buttons enabled: " + TMScore.cueEnablesButtons[cue])
   };
 }
@@ -582,7 +588,7 @@ function addXYPadIfNoMotion() {
     Interface.Dragger({
       toneX: ToneMotion.xSig, // the Tone.js object connected to the x-axis
       toneY: ToneMotion.ySig, // the Tone.js object connected to the y-axis
-      name: " ", // this goes on the intersection of the axes but I don't want text there 
+      name: " ", // this goes on the intersection of the axes but I don't want text there
       x: {
         param: "value", // i.e., testSigX.value
         min: 0.0,
@@ -645,7 +651,7 @@ ToneMotion.ySig.chain(testToneFilterScale, testToneFilter.frequency);
 $("#TestToneButton").click(function() {
   if ($(this).hasClass("soundOff")) {
     testTone.triggerAttack(440);
-    $(this).html("stop");
+    $(this).html("S T O P");
     $(this).removeClass("soundOff").addClass("soundOn");
   }
   else if ($(this).hasClass("soundOn")) {
@@ -674,7 +680,7 @@ var Interface = {
 
 /**
  *
- *  
+ *
  *  DRAGGER
  *
  */
@@ -685,7 +691,7 @@ Interface.Dragger = function(params){
     if ($("#DragContainer").length === 0){
       $("<div>", {
         "id" : "DragContainer"
-      }).appendTo(params.parent || "#Content"); 
+      }).appendTo(params.parent || "#Content");
     }
 
     this.container = $("#DragContainer");
@@ -755,11 +761,12 @@ Interface.Dragger = function(params){
     //set the axis indicator
     var position = this.element.position();
     this.halfSize = this.xAxis.halfSize;
-    this.xAxis.axisIndicator.css("top", position.top + this.halfSize);
-    this.yAxis.axisIndicator.css("left", position.left + this.halfSize);
-  } else {
-    return new Interface.Dragger(params);
+    // this.xAxis.axisIndicator.css("top", position.top + this.halfSize);
+    // this.yAxis.axisIndicator.css("left", position.left + this.halfSize);
   }
+  // else {
+  //   return new Interface.Dragger(params);
+  // }
 };
 
 Interface.Dragger.prototype._ondrag = function(e, pointer){
@@ -795,7 +802,7 @@ Interface.Dragger.prototype._onend = function(e){
 
 /**
  *
- *  
+ *
  *  SLIDER
  *
  */
@@ -889,7 +896,7 @@ Interface.Slider = function(params){
 
       var paramValue = typeof params.value !== "undefined" ? params.value : this.tone.get(this.parameter);
 
-      this.value(paramValue);   
+      this.value(paramValue);
     }
 
   } else {
@@ -918,7 +925,7 @@ Interface.Slider.prototype.value = function(val){
 
   if (this.options){
     this._setParam(this.options[val]);
-  } 
+  }
 };
 
 Interface.Slider.prototype._ondrag = function(e, pointer){
