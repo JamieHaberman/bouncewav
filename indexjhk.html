@@ -3,387 +3,69 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <title>Bounce.wav</title>
+  <title>TITLE</title>
   <meta name="description" content="Web-based algorithmic generation of interactive music">
   <meta name="author" content="Ryan Carter">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="./TMassets/css/TMstyles_v1-2.css">
   <link rel="icon" type="image/png" href="./TMassets/img/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-
-<script>
-$(document).ready(function(){
-  var selectedOne = 0;
-  var selectedTwo = 0;
-  var selectedThree = 0;
-  var selectedFour = 0;
-  var selectedFive = 0;
-  var selectedSix = 0;
-
-  $("#one").click(function () {
-
-  if($('#one').css('opacity') == 0.5) {
-      selectedOne = 1;
-       $("#one").addClass('notfaded');
-       $("#link").attr('href', 'xaxis.html');
-
-
-}else{
-  selectedOne = 0;
-  // alert(selectedOne);
-  $("#one").removeClass('notfaded');
-  $("#link").attr('href', '');
-
-
-
-}
-
-  });
-
-$("#two").click(function () {
-    if($('#two').css('opacity') == 0.5) {
-  selectedTwo = 1;
-   $("#two").addClass('notfaded');
-   $("#link").attr('href', 'vertical.html');
-
-
-}else{
-selectedTwo = 0;
-// alert(selectedOne);
-$("#two").removeClass('notfaded');
-$("#link").attr('href', '');
-}
-});
-
-$("#three").click(function () {
-  if($('#three').css('opacity') == 0.5) {
-selectedThree= 1;
- $("#three").addClass('notfaded');
- $("#link").attr('href', 'xaxis.html');
-}else{
-selectedOne = 0;
-// alert(selectedOne);
-$("#three").removeClass('notfaded');
-$("#link").attr('href', '');
-}
-});
-$("#four").click(function () {
-  if($('#four').css('opacity') == 0.5) {
-selectedFour = 1;
- $("#four").addClass('notfaded');
- $("#link").attr('href', 'xaxis.html');
-}else{
-selectedFour = 0;
-// alert(selectedOne);
-$("#four").removeClass('notfaded');
-$("#link").attr('href', '');
-}
-});
-
-
-$("#five").click(function () {
-  if($('#five').css('opacity') == 0.5) {
-selectedFive = 1;
- $("#five").addClass('notfaded');
- $("#link").attr('href', 'vertical.html');
-}else{
-selectedFive = 0;
-$("#five").removeClass('notfaded');
-$("#link").attr('href', '');
-}
-});
-
-
-$("#six").click(function () {
-  if($('#six').css('opacity') == 0.5) {
-selectedSix = 1;
- $("#six").addClass('notfaded');
- $("#link").attr('href', 'vertical.html');
-
-
-}else{
-selectedSix = 0;
-// alert(selectedOne);
-$("#six").removeClass('notfaded');
-$("#link").attr('href', '');
-}
-});
-
-
-});
-</script>
-
-<style>
-body {
-  background-color: black;
-  padding: 0px;
-  margin: 0px;
-}
-footer {
-  margin-top:5vw;
- padding: 0px;
-}
-button{
- opacity: 0.5;
-}
-#footer {
-padding: 0px;
-margin: 0px;
-
-
-background-color: #f5f5f5;
-}
-.grid{
-margin-bottom:5vw;
-}
-html{
- padding: 0px;
-}
-
-.prompt{
- width:50vw;
- margin-bottom: 5vw;
-}
-#play{
- padding:0px;
- width:100vw;
-
-}
-#logo{
- width:15vw;
-}
-#wrap {
-min-height: 100%;
-height: auto;
-margin: 0 auto -60px;
-padding: 0 0 60px;
-}
-
-.col-md-6{
-padding-bottom: 30px;
-}
-
-.col-sm-2{
-padding-bottom: 30px;
-}
-
-.col{
-padding-bottom: 30px;
-}
-.col-xs-6{
-padding-bottom: 20px;
-}
-button{
-background: none;
-
-border: none;
-}
-
-#one {
-opacity:0.5;
-}
-
-#one.notfaded {
-opacity:1;
-}
-#two {
-opacity:0.5;
-}
-#two.notfaded {
-opacity:1;
-}
-#three {
-opacity:0.5;
-}
-#three.notfaded {
-opacity:1;
-}
-#four {
-opacity:0.5;
-}
-#four.notfaded {
-opacity:1;
-}
-#five {
-opacity:0.5;
-}
-#five.notfaded {
-opacity:1;
-}
-#six {
-opacity:0.5;
-}
-#six.notfaded {
-opacity:1;
-}
-.grid{
-padding-left:10vw;
-padding-right:10vw;
-}
-@media only screen
-   and (min-device-width : 375px)
-   and (max-device-width : 667px)
-
-{
- .grid{
-   margin-bottom:2vw;
- }
- #logo{
-   width:25vw;
- }
- .prompt{
-   width:70vw;
- }
- .grid{
-  padding-left:0px;
-  padding-right:0px;
- }
-}
-</style>
 <body>
-<!--UI  -->
 
-<div id="wrap">
-<nav class="navbar navbar-inverse" style="background-color:black;">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<div id="Content">
 
-      </button>
-      <a class="navbar-brand" ><img id="logo"src = "logo.png" ></img></a>
+  <div id="HeaderWrapper"> <!-- full-width wrapper for title and short description -->
+    <h1>TITLE</h1>
+    <p>SHORT DESCRIPTION with <a href="#">test link</a></p>
+  </div> <!-- /#HeaderWrapper -->
+
+  <div id="InfoWrapper"> <!-- forms left column on tablet/desktop. no columns on phone -->
+    <div id="StatusLabels"> <!-- this element required to use status labels (for testing) -->
     </div>
-
-
+    <div class="displayToggle"> <!-- "More information" -->
+      <a href="#" class="preventDefault"><span class="disclosureTriangle">&#9658; </span>More Information</a>
     </div>
-  </div>
-</nav>
-<div class="container-fluid bg-3 text-center">
-
-  <img class="prompt" src = "prompt.png" ></img>
-<br>
-
-</div>
-<div class="grid" >
-
-<div class="container-fluid bg-4 text-center">
-
-
-  <!-- button grid -->
-  <!-- <div class="row"> -->
-    <div  class="col-4 col-xs-6 col-sm-4 col-md-6 col-lg-4">
-      <div id="one"><img src="piano.png" class="img-responsive" style="width:100%" alt="Image"></div>
+    <div class="hiddenContent"> 
+      <p class="moreInfoQuestion">Question 1</p>
+      <p class="moreInfoAnswer">Answer 1</p>
+      <p class="moreInfoQuestion">Question 2</p>
+      <p class="moreInfoAnswer">Answer 2</p>
     </div>
-    <div class="col-4 col-xs-6 col-sm-4 col-md-6 col-lg-4">
-      <div id="two">  <img src="kick.png" class="img-responsive" style="width:100%" alt="Image">  </div>
+    <div class="displayToggle"> <!-- "test tone" -->
+      <a href="#" class="preventDefault"><span class="disclosureTriangle">&#9658; </span>Test tone</a>
     </div>
-    <div class="col-4 col-xs-6 col-sm-4  col-md-6 col-lg-4">
-      <div id="three"><img src="bass.png" class="img-responsive" style="width:100%" alt="Image">  </div>
+    <div id="TestToneLabel" class="hiddenContent"> 
+      <p>The button below will produce a filtered sawtooth wave (a buzzy sound) with the oscillator frequency controlled on the x-axis and filter cutoff frequency controlled on the y-axis. (When you tilt your device to the left, the sound will be lower; when you tip your device upside down, the sound will be more buzzy.)</p>
+      <button id="TestToneButton" class="soundOff">test</button>
+      <p id="IntroStatusLabel"></p>
     </div>
-
-  <!-- </div> -->
-<!-- </div> -->
-<!-- <br> -->
-
-<!-- <div class="container-fluid bg-4 text-center"> -->
-
-
-  <!-- <div class="row"> -->
-    <div class="col-6 col-xs-6 col-sm-6  col-md-6 col-lg-4">
-      <div id="four">  <img src="synth.png" class="img-responsive" style="width:100%" alt="Image">  </div>
+    <h2>Instructions</h2>
+    <div id="InstructionLabel"> <!-- used to communicate instructions to user -->
+      <p id="Instructions">Please wait while the page is loading.</p>
     </div>
-    <div class="col-4 col-xs-6 col-sm-4 col-md-6 col-lg-4">
-      <div  id="five"><img src="clap.png" class="img-responsive" style="width:100%" alt="Image">  </div>
-    </div>
-    <div class="col-4 col-xs-6 col-sm-4 col-md-6 col-lg-4">
-      <div  id="six">  <img src="hihat.png" class="img-responsive" style="width:100%" alt="Image">  </div>
-    </div>
+  </div> <!-- /#InfoWrapper -->
 
-  </div>
-<!-- </div> -->
-<br><br>
-
-</div>
-<!-- <footer class="container-fluid text-center" style="padding:0px">
-
-</footer> -->
-</div>
-
-  <a id="link"href="">  <div id="TransportButtonWrapper">
-      <!-- <div class="container"> -->
-      <img id="TransportButton" class="resourcesAreLoading" id="play" src = "play.png" > </img>
-        <span id="LoadingAnimation">|</span>
-      <!-- </div> -->
-    </div></a>
-
+  <div id="ControlWrapper"> <!-- forms right column on table/desktop. no columns on phone -->
     <div id="TransportButtonWrapper">
       <button id="TransportButton" class="resourcesAreLoading" disabled>
         <span id="LoadingAnimation">|</span>
       </button>
-
-
-
-
-
-
-
-<!-- <div id="Content"> -->
-
-  <!-- <div id="HeaderWrapper"> <!-- full-width wrapper for title and short description -->
-    <!-- <h1>TITLE</h1>
-    <p>SHORT DESCRIPTION with <a href="#">test link</a></p>
-  </div> <!-- /#HeaderWrapper -->
-
-  <!-- <div id="InfoWrapper"> <!-- forms left column on tablet/desktop. no columns on phone -->
-    <!-- <div id="StatusLabels"> <!-- this element required to use status labels (for testing) -->
-    <!-- </div> -->
-    <!-- <div class="displayToggle"> <!-- "More information" -->
-      <!-- <a href="#" class="preventDefault"><span class="disclosureTriangle">&#9658; </span>More Information</a>
-    </div> -->
-    <!-- <div class="hiddenContent"> -->
-      <!-- <p class="moreInfoQuestion">Question 1</p>
-      <p class="moreInfoAnswer">Answer 1</p>
-      <p class="moreInfoQuestion">Question 2</p>
-      <p class="moreInfoAnswer">Answer 2</p> -->
-    <!-- </div> -->
-    <!-- <div class="displayToggle"> <!-- "test tone" -->
-      <!-- <a href="#" class="preventDefault"><span class="disclosureTriangle">&#9658; </span>Test tone</a>
-    </div> -->
-    <!-- <div id="TestToneLabel" class="hiddenContent"> -->
-      <!-- <p>The button below will produce a filtered sawtooth wave (a buzzy sound) with the oscillator frequency controlled on the x-axis and filter cutoff frequency controlled on the y-axis. (When you tilt your device to the left, the sound will be lower; when you tip your device upside down, the sound will be more buzzy.)</p>
-      <button id="TestToneButton" class="soundOff">test</button> -->
-      <!-- <p id="IntroStatusLabel"></p> -->
-    <!-- </div> -->
-    <!-- <h2>Instructions</h2> -->
-    <!-- <div id="InstructionLabel"> <!-- used to communicate instructions to user -->
-      <!-- <p id="Instructions">Please wait while the page is loading.</p>
-    </div> -->
-  <!-- </div> <!-- /#InfoWrapper -->
-
-  <!-- <div id="ControlWrapper"> <!-- forms right column on table/desktop. no columns on phone -->
-    <!-- <div id="TransportButtonWrapper">
-      <button id="TransportButton" class="resourcesAreLoading" disabled>
-        <span id="LoadingAnimation">|</span>
-      </button> -->
-    <!-- </div> <!-- /#TransportButtonWrapper -->
+    </div> <!-- /#TransportButtonWrapper -->
     <!-- container for XY-pad for devices that don't report motion. not displayed at load. -->
-    <!-- <div id="DragContainer">
+    <div id="DragContainer">
     </div> <!-- /#DragContainer -->
     <!--  action buttons (for ad hoc triggers) are at bottom of interface, but disabled until needed -->
-    <!-- <div id="ActionButtonWrapper"> -->
-      <!-- <div class="actionButtonColumn"><button id="ActionButton1" disabled>1</button></div>
+    <div id="ActionButtonWrapper">
+      <div class="actionButtonColumn"><button id="ActionButton1" disabled>1</button></div>
       <div class="actionButtonColumn"><button id="ActionButton2" disabled>2</button></div>
-      <div class="actionButtonColumn"><button id="ActionButton3" disabled>3</button></div> -->
-    <!-- </div> <!-- /#ActionButtonWrapper --> -->
-  <!-- </div> <!-- /#ControlWrapper -->
+      <div class="actionButtonColumn"><button id="ActionButton3" disabled>3</button></div>
+    </div> <!-- /#ActionButtonWrapper -->
+  </div> <!-- /#ControlWrapper -->
 
   <!-- hidden <audio> element coerces iOS into playing audio when ring/silent switch is on silent-->
   <audio style="display:none;"><source src="./TMassets/audio/silent-buffer-to-set-audio-session.mp3"></audio>
 
-<!-- </div> <!-- /#Content --> -->
+</div> <!-- /#Content -->
 
 <script src="./TMassets/js/jquery.min.js"></script>
 <script src="./TMassets/js/Tone.js"></script>
@@ -393,10 +75,6 @@ padding-right:10vw;
 <script src="./TMassets/js/ToneMotion_v1-1.js"></script>
 
 <script>
-
-
-
-
 /*
 ** ToneMotion is an object of global scope that exposes device motion
 ** properties and default values:
@@ -438,7 +116,7 @@ ToneMotion.deviceShouldSelfCalibrate = false;
 ToneMotion.print = false;
 ToneMotion.shouldSyncToUTC = false;
 // ToneMotion.updateInterval = 1.0;
-// sets lookAhead. "interactive": lookAhead = 0.1; "playback": 0.8; "balanced": 0.25; "fastest": 0.01;
+// sets lookAhead. "interactive": lookAhead = 0.1; "playback": 0.8; "balanced": 0.25; "fastest": 0.01; 
 Tone.context.latencyHint = ToneMotion.updateInterval / 2.0;
 
 
@@ -454,24 +132,24 @@ var needBufferForLoadingToComplete = new Tone.MultiPlayer({
 ****************************SCORE MAP *****************************
 *******************************************************************/
 TMScore.durForCue[1] = 99999;
-// function setIntroInstructions() {
-//   // called when buffers have loaded and music is ready to play
-//   if (ToneMotion.status == "deviceDoesReportMotion") {
-//     setInstructions("The page has loaded. You can now set your device to Airplane Mode. You may also want to set the Orientation Lock to prevent the screen from rotating. When everyone is ready, tap the play button to begin the piece.");
-//   }
-//   else {
-//     setInstructions("The page has loaded and I'll put more instructions here later.");
-//   }
-// }
+function setIntroInstructions() {
+  // called when buffers have loaded and music is ready to play
+  if (ToneMotion.status == "deviceDoesReportMotion") {
+    setInstructions("The page has loaded. You can now set your device to Airplane Mode. You may also want to set the Orientation Lock to prevent the screen from rotating. When everyone is ready, tap the play button to begin the piece.");
+  }
+  else {
+    setInstructions("The page has loaded and I'll put more instructions here later.");
+  }
+}
 // use TMScore.setCue() to skip to a specific section for testing/composing (overriden if .shouldSynctoUTC is true)
 TMScore.setCue(1);
 
 /******************************************************************
 ****************************** CUE 1 ******************************
 *******************************************************************/
-// TMScore.instructionsForCue[1] = "Section 1: instructions";
+TMScore.instructionsForCue[1] = "Section 1: instructions";
 // following block scheduled to be called at beginning of this section
-// Tone.Transport.schedule(function(time){ Tone.Draw.schedule(function(){
+Tone.Transport.schedule(function(time){ Tone.Draw.schedule(function(){ 
   TMScore.nextCue();
 }, time) }, TMScore.st);
 
